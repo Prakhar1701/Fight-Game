@@ -1,5 +1,6 @@
 package prakhar17.developer.fightgame.screens;
 
+import prakhar17.developer.fightgame.sprites.Player;
 import prakhar17.developer.fightgame.utils.GameConstants;
 
 import javax.imageio.ImageIO;
@@ -10,9 +11,11 @@ import java.io.IOException;
 
 public class Board extends JPanel implements GameConstants {
     BufferedImage backgroundImage;
+    private Player player;
 
-    public Board() {
+    public Board() throws Exception {
         loadBackgroundImage();
+        player=new Player();
     }
 
     private void loadBackgroundImage() {
@@ -29,6 +32,7 @@ public class Board extends JPanel implements GameConstants {
     public void paintComponent(Graphics pen) { //Automatically Called //Part Of Life Cycle
         super.paintComponent(pen); //Clean
         printBG(pen);
+        player.paintPlayer(pen);
     }
 
     private void printBG(Graphics pen) {

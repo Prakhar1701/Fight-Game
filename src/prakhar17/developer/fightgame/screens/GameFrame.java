@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class GameFrame extends JFrame implements GameConstants {
 
-    public GameFrame() {
+    public GameFrame() throws Exception {
         setSize(GW, GH);
         setTitle(TITLE);
         setLocationRelativeTo(null);
@@ -18,7 +18,11 @@ public class GameFrame extends JFrame implements GameConstants {
     }
 
     public static void main(String[] args) {
-        GameFrame frame = new GameFrame();
+        try {
+            GameFrame frame = new GameFrame();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
