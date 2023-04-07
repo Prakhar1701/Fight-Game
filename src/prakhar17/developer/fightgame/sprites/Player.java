@@ -14,14 +14,19 @@ public class Player implements GameConstants {
     private BufferedImage kickImages[] = new BufferedImage[3];
     private int index = 0;
     private int currentMove = WALK;
+    private int force;
 
     public Player() throws Exception {
-        x = 100;
-        y = FLOOR;
         w = 150;
         h = 150;
+        x = 100;
+        y = FLOOR - h;
+
         bi = ImageIO.read(Player.class.getResource("sprite.gif"));
+
         speed = 0;
+        force = 0;
+
         loadWalk();
         loadKick();
     }
@@ -35,6 +40,17 @@ public class Player implements GameConstants {
         kickImages[0] = bi.getSubimage(211, 50, 37, 45);
         kickImages[1] = bi.getSubimage(250, 52, 27, 40);
         kickImages[2] = bi.getSubimage(276, 56, 23, 37);
+    }
+
+    public void jump() {
+        force = -15;
+        y = y + force;
+    }
+
+    public void fall() {
+        if (y >= (FLOOR - h)) return;
+        force = force + GRAVITY;
+        y = y + force;
     }
 
     public void move() {

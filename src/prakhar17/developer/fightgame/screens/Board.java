@@ -31,6 +31,7 @@ public class Board extends JPanel implements GameConstants {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
+                player.fall();
             }
         });
         timer.start();
@@ -48,6 +49,8 @@ public class Board extends JPanel implements GameConstants {
                     player.move();
                 } else if (e.getKeyCode() == KeyEvent.VK_K) {
                     player.setCurrentMove(KICK);
+                } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    player.jump();
                 }
             }
 
