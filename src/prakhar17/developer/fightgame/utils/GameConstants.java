@@ -5,4 +5,7 @@ public interface GameConstants {
     int GW = Integer.parseInt(ConfigReader.getValue("game.width"));
     int GH = Integer.parseInt(ConfigReader.getValue("game.height"));
     int FLOOR = Integer.parseInt(ConfigReader.getValue("game.height")) - 450;
+
+    int KICK = 2;
+    int WALK = 1;
 }

@@ -27,7 +27,7 @@ public class Board extends JPanel implements GameConstants {
     }
 
     private void gameLoop() {
-        timer = new Timer(100, new ActionListener() {
+        timer = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
@@ -41,11 +41,13 @@ public class Board extends JPanel implements GameConstants {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    player.setSpeed(-5);
+                    player.setSpeed(-7);
                     player.move();
                 } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    player.setSpeed(5);
+                    player.setSpeed(7);
                     player.move();
+                } else if (e.getKeyCode() == KeyEvent.VK_K) {
+                    player.setCurrentMove(KICK);
                 }
             }
 
