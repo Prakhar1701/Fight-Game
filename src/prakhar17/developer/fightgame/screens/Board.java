@@ -6,6 +6,8 @@ import prakhar17.developer.fightgame.utils.GameConstants;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -15,7 +17,31 @@ public class Board extends JPanel implements GameConstants {
 
     public Board() throws Exception {
         loadBackgroundImage();
-        player=new Player();
+        player = new Player();
+        setFocusable(true);
+        bindEvents();
+    }
+
+    private void bindEvents() {
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    player.setSpeed(-5);
+                    player.move();
+                    repaint();
+                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    player.setSpeed(5);
+                    player.move();
+                    repaint();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                player.setSpeed(0);
+            }
+        });
     }
 
     private void loadBackgroundImage() {
