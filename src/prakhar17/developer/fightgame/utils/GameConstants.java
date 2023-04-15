@@ -9,4 +9,5 @@ public interface GameConstants {
     int KICK = 2;
     int WALK = 1;
     int GRAVITY = 1;
+    int DELAY = 100;
 }

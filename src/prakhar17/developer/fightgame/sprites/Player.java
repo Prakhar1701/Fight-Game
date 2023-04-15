@@ -15,6 +15,7 @@ public class Player implements GameConstants {
     private int index = 0;
     private int currentMove = WALK;
     private int force;
+    private boolean isJumping;
 
     public Player() throws Exception {
         w = 150;
@@ -43,12 +44,18 @@ public class Player implements GameConstants {
     }
 
     public void jump() {
-        force = -15;
-        y = y + force;
+        if (!isJumping) {
+            force = -13;
+            y = y + force;
+            isJumping = true;
+        }
     }
 
     public void fall() {
-        if (y >= (FLOOR - h)) return;
+        if (y >= (FLOOR - h)) {
+            isJumping = false;
+            return;
+        }
         force = force + GRAVITY;
         y = y + force;
     }

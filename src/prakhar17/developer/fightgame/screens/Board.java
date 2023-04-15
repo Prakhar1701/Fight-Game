@@ -27,7 +27,7 @@ public class Board extends JPanel implements GameConstants {
     }
 
     private void gameLoop() {
-        timer = new Timer(200, new ActionListener() {
+        timer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
