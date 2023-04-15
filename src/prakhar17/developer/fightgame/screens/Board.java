@@ -77,7 +77,7 @@ public class Board extends JPanel implements GameConstants {
     public void paintComponent(Graphics pen) { //Automatically Called //Part Of Life Cycle
         super.paintComponent(pen); //Clean
         printBG(pen);
-        player.paintPlayer(pen);
+        player.printSprite(pen);
     }
 
     private void printBG(Graphics pen) {
