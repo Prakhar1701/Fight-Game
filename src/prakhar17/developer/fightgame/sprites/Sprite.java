@@ -15,6 +15,10 @@ public abstract class Sprite implements GameConstants {
     protected int currentMove;
     protected int index;
 
+    public BufferedImage getSpriteImage() {
+        return bi;
+    }
+
     public Sprite() throws IOException {
         bi = ImageIO.read(Player.class.getResource("sprite.gif"));
         w = 150;

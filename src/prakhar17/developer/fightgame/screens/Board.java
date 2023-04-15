@@ -1,6 +1,8 @@
 package prakhar17.developer.fightgame.screens;
 
+import prakhar17.developer.fightgame.sprites.Enemy;
 import prakhar17.developer.fightgame.sprites.Player;
+import prakhar17.developer.fightgame.utils.EnemyTypeCoordinates;
 import prakhar17.developer.fightgame.utils.GameConstants;
 
 import javax.imageio.ImageIO;
@@ -17,11 +19,19 @@ public class Board extends JPanel implements GameConstants {
     BufferedImage backgroundImage;
     BufferedImage partOfImage;
     private Player player;
+    private Enemy enemy;
     private Timer timer;
 
     public Board() throws Exception {
         loadBackgroundImage();
+
         player = new Player();
+
+        enemy = new Enemy(EnemyTypeCoordinates.handAttackEnemy);
+        EnemyTypeCoordinates.loadHandAttackEnemy(enemy.getSpriteImage());
+        EnemyTypeCoordinates.loadBatAttackEnemy(enemy.getSpriteImage());
+        EnemyTypeCoordinates.loadKnifeAttackEnemy(enemy.getSpriteImage());
+
         setFocusable(true);
         bindEvents();
         gameLoop();
@@ -78,6 +88,7 @@ public class Board extends JPanel implements GameConstants {
         super.paintComponent(pen); //Clean
         printBG(pen);
         player.printSprite(pen);
+        enemy.printSprite(pen);
     }
 
     private void printBG(Graphics pen) {
