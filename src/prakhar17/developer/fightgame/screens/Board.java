@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class Board extends JPanel implements GameConstants {
     BufferedImage backgroundImage;
+    BufferedImage partOfImage;
     private Player player;
     private Timer timer;
 
@@ -63,7 +64,8 @@ public class Board extends JPanel implements GameConstants {
 
     private void loadBackgroundImage() {
         try {
-            backgroundImage = ImageIO.read(Board.class.getResource("night_war_background.jpeg"));
+            backgroundImage = ImageIO.read(Board.class.getResource("game-bg.png"));
+            partOfImage = backgroundImage.getSubimage(0, 0, 650, 200);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Unable to load background...");
             System.out.println(e);
@@ -79,6 +81,6 @@ public class Board extends JPanel implements GameConstants {
     }
 
     private void printBG(Graphics pen) {
-        pen.drawImage(backgroundImage, 0, 0, GW, GH, null);
+        pen.drawImage(partOfImage, 0, 0, GW, GH, null);
     }
 }
