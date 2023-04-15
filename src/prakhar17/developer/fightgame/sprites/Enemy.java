@@ -11,6 +11,7 @@ public class Enemy extends Sprite {
         x = GW - 250;
         currentMove = WALK;
         index = 0;
+        speed = -15;
     }
 
     @Override
@@ -20,5 +21,6 @@ public class Enemy extends Sprite {
         }
         pen.drawImage(enemyImages[index], x, y, w, h, null);
         index++;
+        move();
     }
 }
